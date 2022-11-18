@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class FriendAttacker
+public class Attacker
 {
     public int upgradeLevel;
 }

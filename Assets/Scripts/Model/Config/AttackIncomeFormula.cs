@@ -8,7 +8,7 @@ public class AttackIncomeFormula
     public float y;
 
     /// <summary>
-    /// Upgrade formula:
+    /// Income formula:
     /// value = <see cref="x">
     ///     * <paramref name="upgradeLevel"> ^ <see cref="y">
     /// </summary>

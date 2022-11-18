@@ -6,5 +6,6 @@ public class GameData
 {
     public int currencyCount;
     public int upgradeLevel;
-    public List<FriendAttacker> friendAttackers;
+    public int attackTimeS;
+    public List<Attacker> attackers;
 }
