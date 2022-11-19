@@ -1,0 +1,23 @@
+{
+  "maxAttackersCount": 5,
+  "tapAttackIncomeFormula": {
+    "x": 5,
+    "y": 2.1
+  },
+  "tapUpgradeCostFormula": {
+    "x": 5,
+    "y": 1.08
+  },
+  "attackerCostFormula": {
+    "initCost": 100,
+    "x": 10
+  },
+  "attackerIncomeFormula": {
+    "x": 5,
+    "y": 2.1
+  },
+  "attackerUpgradeCostFormula": {
+    "x": 5,
+    "y": 1.08
+  }
+}

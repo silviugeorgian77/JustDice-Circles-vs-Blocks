@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class MainSceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private TextAsset gameConfigAsset;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private GameplayManager gameplayManager;
+
+    private void Awake()
     {
-        
+        var dataService = new GameConfigDataService(gameConfigAsset.text);
+        dataService.GetGameConfig(gameConfig =>
+        {
+            gameplayManager.Init(gameConfig);
+        });
     }
 }
