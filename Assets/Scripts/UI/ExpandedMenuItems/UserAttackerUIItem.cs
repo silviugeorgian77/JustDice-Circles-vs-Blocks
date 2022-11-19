@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEditor.Experimental.GraphView;
 
 public class UserAttackerUIItem : MonoBehaviour
 {
@@ -14,23 +15,26 @@ public class UserAttackerUIItem : MonoBehaviour
     [SerializeField]
     private Button buyButton;
 
+    private UpgradeCostFormula upgradeCostFormula;
+
     public void Bind(
         Attacker attacker,
         UpgradeCostFormula upgradeCostFormula,
         Action action)
     {
+        this.upgradeCostFormula = upgradeCostFormula;
         UpdateLevel(attacker.UpgradeLevel);
         attacker.onUpgradeLevelChanged += UpdateLevel;
-        costText.text
-            = upgradeCostFormula
-                .GetValue(attacker.UpgradeLevel)
-                .ToString();
         buyButton.onClick.AddListener(() => action.Invoke());
     }
 
     private void UpdateLevel(int level)
     {
         upgradeLevelText.text = (level + 1).ToString();
+        costText.text
+            = upgradeCostFormula
+                    .GetValue(level)
+                    .ToString();
     }
 
     private void OnDestroy()

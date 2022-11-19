@@ -21,18 +21,27 @@ public class AttackerUIItem : MonoBehaviour
     [SerializeField]
     private TMP_Text buyButtonText;
 
+    [SerializeField]
+    private Image bagImage;
+
+    [SerializeField]
+    private Color color0;
+
+    [SerializeField]
+    private Color color1;
+
+    private UpgradeCostFormula upgradeCostFormula;
+
     public void Bind(
        Attacker attacker,
        UpgradeCostFormula upgradeCostFormula,
        Action action)
     {
-        titleText.text = "Circle" + attacker.Id;
+        this.upgradeCostFormula = upgradeCostFormula;
+        bagImage.color = attacker.Id % 2 == 0 ? color0 : color1;
+        titleText.text = "Circle " + attacker.Id;
         UpdateLevel(attacker.UpgradeLevel);
         attacker.onUpgradeLevelChanged += UpdateLevel;
-        costText.text
-            = upgradeCostFormula
-                .GetValue(attacker.UpgradeLevel)
-                .ToString();
         buyButton.onClick.AddListener(() => action.Invoke());
     }
 
@@ -47,6 +56,10 @@ public class AttackerUIItem : MonoBehaviour
         {
             buyButtonText.text = "UPGRADE";
         }
+        costText.text
+            = upgradeCostFormula
+                .GetValue(level)
+                .ToString();
     }
 
     private void OnDestroy()
