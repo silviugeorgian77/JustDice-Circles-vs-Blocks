@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameConfigOnlineDataService : IGameConfigOnlineDataProvider
 {
-    private const string END_POINT = "https://drive.google.com/uc?id=1ZB0nUtIbaBQP1AigeE6abqereFjUR9GE";
+    private const string END_POINT = "https://drive.google.com/uc?id=1jpZT0Qq2GezoaJqwPEKn2OvQlyp8oPPE";
 
     private WebClient webClient = new WebClient(new JsonSerializationOption());
 

@@ -5,6 +5,12 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     private GameObject attackerDisplayerPrefab;
 
+    [SerializeField]
+    private EnemyDisplayer enemyDisplayer;
+
+    [SerializeField]
+    private Touchable userAttackTouchable;
+
     private GameConfig gameConfig;
     private UserData userData;
 
@@ -15,6 +21,7 @@ public class GameplayManager : MonoBehaviour
         this.gameConfig = gameConfig;
         this.userData = userData;
         SpawnAttackers();
+        InitUserAttack();
     }
 
     private void SpawnAttackers()
@@ -32,5 +39,18 @@ public class GameplayManager : MonoBehaviour
             attackerDisplayer.Initialize(currentAngle, DISTANCE_FROM_ENEMY);
             currentAngle += deltaAngleBetweenAttackers;
         }
+    }
+
+    private void InitUserAttack()
+    {
+        userAttackTouchable.OnClickEndedInsideCallBack = (touchable) =>
+        {
+            enemyDisplayer.TakeUserDamage();
+            var income
+                = gameConfig
+                    .tapAttackIncomeFormula
+                    .GetValue(userData.UpgradeLevel);
+            userData.CurrencyCount += income;
+        };
     }
 }

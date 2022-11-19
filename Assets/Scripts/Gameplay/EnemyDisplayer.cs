@@ -14,8 +14,8 @@ public class EnemyDisplayer : MonoBehaviour
     private const float MIN_ROTATE_DURATION = 5f;
     private const float MAX_ROTATE_DURATION = 15f;
 
-    private const float SCALE_USER_DAMAGE = 1.2f;
-    private const float DURATION_USER_DAMAGE = .2f;
+    private const float SCALE_USER_DAMAGE = 1.1f;
+    private const float DURATION_USER_DAMAGE = .1f;
 
     private void Awake()
     {

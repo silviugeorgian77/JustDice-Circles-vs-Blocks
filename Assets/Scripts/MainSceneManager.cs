@@ -53,6 +53,7 @@ public class MainSceneManager : MonoBehaviour
         {
             gameplayManager.Init(gameConfig, userData);
             saveManager.Init(userData, userDataService);
+            uiManager.Init(userData);
             uiManager.HideLoading();
         }
     }

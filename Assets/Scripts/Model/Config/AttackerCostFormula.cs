@@ -1,9 +1,13 @@
 using System;
+using Newtonsoft.Json;
 
 [Serializable]
 public class AttackerCostFormula
 {
+    [JsonProperty("initCost")]
     public float initCost;
+
+    [JsonProperty("x")]
     public float x;
 
     /// <summary>
