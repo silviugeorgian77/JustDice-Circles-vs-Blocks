@@ -16,11 +16,11 @@ public class UIManager : MonoBehaviour
     private Button collapseMenuButton;
 
     [SerializeField]
-    private GameObject expandedMenuObject;
+    private ExpandedMenuManager expandedMenuManager;
 
     private UserData userData;
 
-    public void Init(UserData userData)
+    public void Init(GameConfig gameConfig, UserData userData)
     {
         this.userData = userData;
 
@@ -29,7 +29,9 @@ public class UIManager : MonoBehaviour
 
         expandMenuButton.gameObject.SetActive(true);
         collapseMenuButton.gameObject.SetActive(false);
-        expandedMenuObject.SetActive(false);
+        expandedMenuManager.gameObject.SetActive(false);
+
+        expandedMenuManager.Init(gameConfig, userData);
 
         expandMenuButton.onClick.AddListener(OnExpandMenu);
         collapseMenuButton.onClick.AddListener(OnCollapseMenu);
@@ -54,14 +56,14 @@ public class UIManager : MonoBehaviour
     {
         expandMenuButton.gameObject.SetActive(false);
         collapseMenuButton.gameObject.SetActive(true);
-        expandedMenuObject.SetActive(true);
+        expandedMenuManager.gameObject.SetActive(true);
     }
 
     private void OnCollapseMenu()
     {
         expandMenuButton.gameObject.SetActive(true);
         collapseMenuButton.gameObject.SetActive(false);
-        expandedMenuObject.SetActive(false);
+        expandedMenuManager.gameObject.SetActive(false);
     }
 
     private void OnDestroy()

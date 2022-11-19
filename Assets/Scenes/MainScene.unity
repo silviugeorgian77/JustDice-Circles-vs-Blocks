@@ -422,7 +422,7 @@ MonoBehaviour:
   currencyWidget: {fileID: 1614479875}
   expandMenuButton: {fileID: 712013074}
   collapseMenuButton: {fileID: 5720148077865554578}
-  expandedMenuObject: {fileID: 2064229599}
+  expandedMenuManager: {fileID: 2064229602}
 --- !u!224 &994656122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5720148078749969899, guid: 4106c6862b58c4828869c43a8a286c60, type: 3}
@@ -1420,13 +1420,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2064229600}
   - component: {fileID: 2064229601}
+  - component: {fileID: 2064229602}
   m_Layer: 5
   m_Name: ExpandedMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2064229600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1443,10 +1444,10 @@ RectTransform:
   m_Father: {fileID: 2007855046}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -611.1111}
-  m_SizeDelta: {x: 800, y: 1222.2222}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064229601
 MonoBehaviour:
@@ -1468,6 +1469,22 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
+--- !u!114 &2064229602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064229599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae0495cce38345ffb97bc4bde54aaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentTransform: {fileID: 1362432359}
+  simpleButtonUIItemPrefab: {fileID: 7925719261902789498, guid: 0f458e42821704c6387d76cc4f478df1, type: 3}
+  attackerUIItemPrefab: {fileID: 6135798436582316570, guid: 65897eef2c3a240f3bd3fcb704251e10, type: 3}
+  userAttackerUIItemPrefab: {fileID: 2901160574412780433, guid: 8c692e0d7f2d847938e2f0bed83d42dd, type: 3}
 --- !u!1 &2076737543
 GameObject:
   m_ObjectHideFlags: 0

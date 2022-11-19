@@ -58,4 +58,11 @@ public class UserData
             onAttackersChanged?.Invoke(attackers);
         }
     }
+
+    public void Reset()
+    {
+        CurrencyCount = 0;
+        UpgradeLevel = 0;
+        Attackers = null;
+    }
 }
