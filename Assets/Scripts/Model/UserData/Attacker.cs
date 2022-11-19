@@ -22,7 +22,7 @@ public class Attacker
     [JsonProperty("upgradeLevel")]
     private int upgradeLevel;
     [JsonIgnore]
-    public Action<int, int> onUpgradeLevelChanged;
+    public Action<int> onUpgradeLevelChanged;
     [JsonIgnore]
     public int UpgradeLevel
     {
@@ -33,7 +33,7 @@ public class Attacker
         set
         {
             upgradeLevel = value;
-            onUpgradeLevelChanged?.Invoke(id, upgradeLevel);
+            onUpgradeLevelChanged?.Invoke(upgradeLevel);
         }
     }
 

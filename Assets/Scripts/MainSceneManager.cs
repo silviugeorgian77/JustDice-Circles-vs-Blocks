@@ -39,18 +39,19 @@ public class MainSceneManager : MonoBehaviour
         userDataService.GetUserData(userData =>
         {
             this.userData = userData;
-            if (this.userData == null)
-            {
-                this.userData = new UserData();
-            }
             OnServiceReady();
         });
     }
 
     private void OnServiceReady()
     {
-        if (userData != null && gameConfig != null)
+        if (gameConfig != null)
         {
+            if (this.userData == null)
+            {
+                this.userData = new UserData();
+                this.userData.Reset(gameConfig.maxAttackersCount);
+            }
             gameplayManager.Init(gameConfig, userData);
             saveManager.Init(userData, userDataService);
             uiManager.Init(gameConfig, userData);

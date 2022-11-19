@@ -23,21 +23,21 @@ public class UserData
         }
     }
 
-    [JsonProperty("upgradeLevel")]
-    private int upgradeLevel;
+    [JsonProperty("userAttacker")]
+    private Attacker userAttacker;
     [JsonIgnore]
-    public Action<int> onUpgradeLevelChanged;
+    public Action<Attacker> onUserAttackerChanged;
     [JsonIgnore]
-    public int UpgradeLevel
+    public Attacker UserAttacker
     {
         get
         {
-            return upgradeLevel;
+            return userAttacker;
         }
         set
         {
-            upgradeLevel = value;
-            onUpgradeLevelChanged?.Invoke(upgradeLevel);
+            userAttacker = value;
+            onUserAttackerChanged?.Invoke(userAttacker);
         }
     }
 
@@ -59,10 +59,20 @@ public class UserData
         }
     }
 
-    public void Reset()
+    public void Reset(int attackersCount)
     {
         CurrencyCount = 0;
-        UpgradeLevel = 0;
-        Attackers = null;
+        UserAttacker = new Attacker();
+        var tempAttackers = new List<Attacker>();
+        Attacker attacker;
+        for (int i = 0; i < attackersCount; i++)
+        {
+            attacker = new Attacker()
+            {
+                Id = i
+            };
+            tempAttackers.Add(attacker);
+        }
+        Attackers = tempAttackers;
     }
 }

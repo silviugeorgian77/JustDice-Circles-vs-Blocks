@@ -59,14 +59,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.33333334, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3596e132d594f45359e298f9e7be43eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -246,7 +246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28625003, y: 0.33333334}
   m_AnchorMax: {x: 0.59875, y: 0.53000003}
-  m_AnchoredPosition: {x: -1.5, y: -1.469986}
+  m_AnchoredPosition: {x: -1.5, y: -1.4699707}
   m_SizeDelta: {x: 0.7900009, y: -0.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2901160573075442570
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -381,7 +381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7375, y: 0.33333334}
   m_AnchorMax: {x: 0.9312501, y: 0.53000003}
-  m_AnchoredPosition: {x: -1.3700256, y: -1.469986}
+  m_AnchoredPosition: {x: -1.3700256, y: -1.4699707}
   m_SizeDelta: {x: 5, y: -0.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2901160573392122990
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CIRCLE 1
+  m_text: TAP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bfb8a9bfda71549d49362b3abe54b63f, type: 2}
   m_sharedMaterial: {fileID: -4062824624981878315, guid: bfb8a9bfda71549d49362b3abe54b63f, type: 2}
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.007843138, g: 0.9607844, b: 0.60784316, a: 1}
+  m_Color: {r: 0.007843145, g: 0.7161933, b: 0.9607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

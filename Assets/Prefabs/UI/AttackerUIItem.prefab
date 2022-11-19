@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7375, y: 0.33333334}
   m_AnchorMax: {x: 0.9312501, y: 0.53000003}
-  m_AnchoredPosition: {x: -1.3700256, y: -1.469986}
+  m_AnchoredPosition: {x: -1.3700256, y: -1.4699707}
   m_SizeDelta: {x: 5, y: -0.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6135798435589709285
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28625003, y: 0.33333334}
   m_AnchorMax: {x: 0.59875, y: 0.53000003}
-  m_AnchoredPosition: {x: -1.5, y: -1.469986}
+  m_AnchoredPosition: {x: -1.5, y: -1.4699707}
   m_SizeDelta: {x: 0.7900009, y: -0.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6135798435767968257
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -663,6 +663,7 @@ MonoBehaviour:
   upgradeLevelText: {fileID: 6135798435767968318}
   costText: {fileID: 6135798435589709282}
   buyButton: {fileID: 6135798436361834187}
+  buyButtonText: {fileID: 6135798436230696032}
 --- !u!114 &6135798436582316572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,7 +853,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

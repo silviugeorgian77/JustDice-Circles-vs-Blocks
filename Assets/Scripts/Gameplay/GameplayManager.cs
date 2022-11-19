@@ -49,7 +49,7 @@ public class GameplayManager : MonoBehaviour
             var income
                 = gameConfig
                     .tapAttackIncomeFormula
-                    .GetValue(userData.UpgradeLevel);
+                    .GetValue(userData.UserAttacker.UpgradeLevel);
             userData.CurrencyCount += income;
         };
     }

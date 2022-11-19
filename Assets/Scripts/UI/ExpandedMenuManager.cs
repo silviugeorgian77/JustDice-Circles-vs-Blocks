@@ -27,7 +27,50 @@ public class ExpandedMenuManager : MonoBehaviour
 
     private void InitScrollViewItems()
     {
+        InitUserAttackerItem();
+        InitAttackerItems();
         InitClearDataButton();
+    }
+
+    private void InitUserAttackerItem()
+    {
+        var userAttackerUIItemObject = Instantiate(
+            userAttackerUIItemPrefab,
+            contentTransform
+        );
+        var userAttackerUIItem
+            = userAttackerUIItemObject.GetComponent<UserAttackerUIItem>();
+        userAttackerUIItem.Bind(
+            userData.UserAttacker,
+            gameConfig.tapUpgradeCostFormula,
+            () =>
+            {
+                userData.UserAttacker.UpgradeLevel++;
+            }
+        );
+    }
+
+    private void InitAttackerItems()
+    {
+        GameObject attackerUIItemObject;
+        AttackerUIItem attackerUIItem;
+        foreach (var attacker in userData.Attackers)
+        {
+            attackerUIItemObject = Instantiate(
+                attackerUIItemPrefab,
+                contentTransform
+            );
+            attackerUIItem
+                = attackerUIItemObject.GetComponent<AttackerUIItem>();
+            attackerUIItem.Bind(
+                attacker,
+                gameConfig.attackerUpgradeCostFormula,
+                () =>
+                {
+                    attacker.UpgradeLevel++;
+                }
+            );
+        }
     }
 
     private void InitClearDataButton()
@@ -40,7 +83,7 @@ public class ExpandedMenuManager : MonoBehaviour
             = clearDataItemObject.GetComponent<SimpleButtonUIItem>();
         clearDataItem.Bind("Clear Data", () =>
         {
-            userData.Reset();
+            userData.Reset(gameConfig.maxAttackersCount);
         });
     }
 }
