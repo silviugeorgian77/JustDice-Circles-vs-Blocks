@@ -6,12 +6,14 @@ public class GameplayManager : MonoBehaviour
     private GameObject attackerDisplayerPrefab;
 
     private GameConfig gameConfig;
+    private UserData userData;
 
     private const float DISTANCE_FROM_ENEMY = 2f;
 
-    public void Init(GameConfig gameConfig)
+    public void Init(GameConfig gameConfig, UserData userData)
     {
         this.gameConfig = gameConfig;
+        this.userData = userData;
         SpawnAttackers();
     }
 

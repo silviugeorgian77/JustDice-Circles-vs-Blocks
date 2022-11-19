@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class GameData
+public class UserData
 {
     public int currencyCount;
     public int upgradeLevel;

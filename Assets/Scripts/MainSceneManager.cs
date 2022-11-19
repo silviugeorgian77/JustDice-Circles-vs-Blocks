@@ -13,15 +13,47 @@ public class MainSceneManager : MonoBehaviour
     [SerializeField]
     private UIManager uiManager;
 
+    [SerializeField]
+    private SaveManager saveManager;
+
+    private GameConfigDataService gameConfigDataService;
+    private UserDataLocalService userDataService;
+
+    private GameConfig gameConfig;
+    private UserData userData;
+
     private void Awake()
     {
         uiManager.ShowLoading();
 
-        var dataService = new GameConfigDataService(gameConfigAsset.text);
-        dataService.GetGameConfig(gameConfig =>
+        gameConfigDataService
+            = new GameConfigDataService(gameConfigAsset.text);
+        gameConfigDataService.GetGameConfig(gameConfig =>
         {
-            gameplayManager.Init(gameConfig);
-            uiManager.HideLoading();
+            this.gameConfig = gameConfig;
+            OnServiceReady();
+            
         });
+
+        userDataService = new UserDataLocalService();
+        userDataService.GetUserData(userData =>
+        {
+            this.userData = userData;
+            if (this.userData == null)
+            {
+                this.userData = new UserData();
+            }
+            OnServiceReady();
+        });
+    }
+
+    private void OnServiceReady()
+    {
+        if (userData != null && gameConfig != null)
+        {
+            gameplayManager.Init(gameConfig, userData);
+            saveManager.Init(userData, userDataService);
+            uiManager.HideLoading();
+        }
     }
 }
