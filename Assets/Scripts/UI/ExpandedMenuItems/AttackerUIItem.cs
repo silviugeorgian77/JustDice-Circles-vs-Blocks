@@ -47,7 +47,7 @@ public class AttackerUIItem : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
-        upgradeLevelText.text = (level + 1).ToString();
+        upgradeLevelText.text = "Level: " + (level + 1).ToString();
         if (level == 0)
         {
             buyButtonText.text = "BUY";
@@ -57,7 +57,8 @@ public class AttackerUIItem : MonoBehaviour
             buyButtonText.text = "UPGRADE";
         }
         costText.text
-            = upgradeCostFormula
+            = "Cost: "
+            + upgradeCostFormula
                 .GetValue(level)
                 .ToString();
     }

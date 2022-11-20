@@ -14,8 +14,8 @@ public class AttackerCostFormula
     /// Cost formula:
     /// value = <see cref="x"> * <paramref name="initCost">
     /// </summary>
-    public float GetValue()
+    public int GetValue()
     {
-        return x * initCost;
+        return (int)(x * initCost);
     }
 }

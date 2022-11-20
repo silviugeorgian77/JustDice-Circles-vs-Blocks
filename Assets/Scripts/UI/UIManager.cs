@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
         loadingObject.SetActive(false);
     }
 
-    private void OnCurrencyCountChanged(float currencyCount)
+    private void OnCurrencyCountChanged(int currencyCount)
     {
         currencyWidget.Bind(currencyCount);
     }

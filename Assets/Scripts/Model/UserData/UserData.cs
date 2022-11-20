@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 public class UserData
 {
     [JsonProperty("currencyCount")]
-    private float currencyCount;
+    private int currencyCount;
     [JsonIgnore]
-    public Action<float> onCurrencyCountChanged;
+    public Action<int> onCurrencyCountChanged;
     [JsonIgnore]
-    public float CurrencyCount
+    public int CurrencyCount
     {
         get
         {

@@ -16,8 +16,8 @@ public class AttackIncomeFormula
     /// value = <see cref="x">
     ///     * <paramref name="upgradeLevel"> ^ <see cref="y">
     /// </summary>
-    public float GetValue(int upgradeLevel)
+    public int GetValue(int upgradeLevel)
     {
-        return x * Mathf.Pow(upgradeLevel + 1, y);
+        return (int)(x * Mathf.Pow(upgradeLevel + 1, y));
     }
 }
