@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,9 @@ public class UIManager : MonoBehaviour
     private ExpandedMenuManager expandedMenuManager;
 
     private UserData userData;
+
+    public Action onExpandMenu;
+    public Action onCollapseMenu;
 
     public void Init(GameConfig gameConfig, UserData userData)
     {
@@ -57,6 +61,7 @@ public class UIManager : MonoBehaviour
         expandMenuButton.gameObject.SetActive(false);
         collapseMenuButton.gameObject.SetActive(true);
         expandedMenuManager.gameObject.SetActive(true);
+        onExpandMenu?.Invoke();
     }
 
     private void OnCollapseMenu()
@@ -64,6 +69,7 @@ public class UIManager : MonoBehaviour
         expandMenuButton.gameObject.SetActive(true);
         collapseMenuButton.gameObject.SetActive(false);
         expandedMenuManager.gameObject.SetActive(false);
+        onCollapseMenu?.Invoke();
     }
 
     private void OnDestroy()

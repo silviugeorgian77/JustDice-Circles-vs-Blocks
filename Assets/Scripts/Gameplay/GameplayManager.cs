@@ -53,4 +53,14 @@ public class GameplayManager : MonoBehaviour
             userData.CurrencyCount += income;
         };
     }
+
+    public void EnableInput()
+    {
+        userAttackTouchable.inputEnabled = true;
+    }
+
+    public void DisableInput()
+    {
+        userAttackTouchable.inputEnabled = false;
+    }
 }

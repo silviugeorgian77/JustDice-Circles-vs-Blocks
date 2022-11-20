@@ -24,15 +24,21 @@ public class MainSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        uiManager.ShowLoading();
+        uiManager.onExpandMenu += OnExpandMenu;
+        uiManager.onCollapseMenu += OnCollapseMenu;
+        StartServices();
+    }
 
+    private void StartServices()
+    {
+        uiManager.ShowLoading();
         gameConfigDataService
             = new GameConfigDataService(gameConfigAsset.text);
         gameConfigDataService.GetGameConfig(gameConfig =>
         {
             this.gameConfig = gameConfig;
             OnServiceReady();
-            
+
         });
 
         userDataService = new UserDataLocalService();
@@ -58,5 +64,21 @@ public class MainSceneManager : MonoBehaviour
 
             uiManager.HideLoading();
         }
+    }
+
+    private void OnExpandMenu()
+    {
+        gameplayManager.DisableInput();
+    }
+
+    private void OnCollapseMenu()
+    {
+        gameplayManager.EnableInput();
+    }
+
+    private void OnDestroy()
+    {
+        uiManager.onExpandMenu -= OnExpandMenu;
+        uiManager.onCollapseMenu -= OnCollapseMenu;
     }
 }
