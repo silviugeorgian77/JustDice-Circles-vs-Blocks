@@ -8,7 +8,7 @@ public class SaveManager : MonoBehaviour
     private Delayer delayer;
 
     [SerializeField]
-    private float autoSaveIntervalS = 30f;
+    private float autoSaveIntervalS = 10f;
 
     private UserData userData;
     private IUserDataLocalProvider userDataLocalProvider;
@@ -31,12 +31,21 @@ public class SaveManager : MonoBehaviour
         });
     }
 
+    // ToDo keep either OnApplicationPause or OnApplicationFocus
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SaveGame();
+        }
+    }
+
     private void OnApplicationFocus(bool focus)
     {
         if (!focus)
         {
             SaveGame();
-        }   
+        }
     }
 
     private void SaveGame()

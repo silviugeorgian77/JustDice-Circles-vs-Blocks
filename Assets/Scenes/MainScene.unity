@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayer: {fileID: 652145662}
-  autoSaveIntervalS: 30
+  autoSaveIntervalS: 10
 --- !u!4 &652145664
 Transform:
   m_ObjectHideFlags: 0

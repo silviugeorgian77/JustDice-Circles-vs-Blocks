@@ -36,13 +36,8 @@ public class AttackerDisplayer : MonoBehaviour
         this.angleRelativeToEnemy = angleRelativeToEnemy;
         this.maxDistanceFromEnemy = distanceFromEnemy;
 
-        pivotRotatable.RotateToZ(angleRelativeToEnemy, 0);
-
-        contentMoveable.MoveY(
-            distanceFromEnemy,
-            0,
-            TransformScope.LOCAL
-        );
+        ResetRotation();
+        ResetPosition();
     }
 
     private void AnimateIdle()
@@ -73,6 +68,20 @@ public class AttackerDisplayer : MonoBehaviour
         );
     }
 
+    private void ResetRotation()
+    {
+        pivotRotatable.RotateToZ(angleRelativeToEnemy, 0);
+    }
+
+    private void ResetPosition()
+    {
+        contentMoveable.MoveY(
+            maxDistanceFromEnemy,
+            0,
+            TransformScope.LOCAL
+        );
+    }
+
     public void Bind(Attacker attacker)
     {
         Attacker = attacker;
@@ -92,6 +101,11 @@ public class AttackerDisplayer : MonoBehaviour
         {
             levelText.text = (level + 1).ToString();
             AnimateIdle();
+        }
+        else
+        {
+            ResetRotation();
+            ResetPosition();
         }
     }
 
