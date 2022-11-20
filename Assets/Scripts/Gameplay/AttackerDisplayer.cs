@@ -53,6 +53,10 @@ public class AttackerDisplayer : MonoBehaviour
 
     public void Attack()
     {
+        if (contentMoveable == null)
+        {
+            return;
+        }
         contentMoveable.MoveY(
             MIN_DISTANCE_FROM_ENEMY,
             ATTACK_DURATION_S,
