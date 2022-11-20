@@ -59,6 +59,7 @@ public class UserData
         }
     }
 
+    [JsonIgnore]
     public Action onReset;
     public void Reset(int attackersCount)
     {
