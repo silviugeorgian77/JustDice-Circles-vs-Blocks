@@ -33,6 +33,7 @@ public class GameplayManager : MonoBehaviour
     {
         this.gameConfig = gameConfig;
         this.userData = userData;
+        userData.onReset += OnUserDataReset;
         SpawnAttackers();
         InitAttackersAttack();
         InitUserAttack();
@@ -134,5 +135,15 @@ public class GameplayManager : MonoBehaviour
     public void DisableInput()
     {
         userAttackTouchable.inputEnabled = false;
+    }
+
+    private void OnUserDataReset()
+    {
+        delayer.RemoveAllDelays();
+    }
+
+    private void OnDestroy()
+    {
+        userData.onReset -= OnUserDataReset;
     }
 }

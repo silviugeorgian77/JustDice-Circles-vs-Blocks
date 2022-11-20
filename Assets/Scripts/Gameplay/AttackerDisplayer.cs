@@ -107,7 +107,7 @@ public class AttackerDisplayer : MonoBehaviour
         pivotRotatable.RotateStop();
         if (isBought)
         {
-            levelText.text = (level + 1).ToString();
+            levelText.text = level.ToString();
             AnimateIdle();
         }
         else

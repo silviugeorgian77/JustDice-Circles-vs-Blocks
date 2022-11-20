@@ -47,7 +47,15 @@ public class AttackerUIItem : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
-        upgradeLevelText.text = "Level: " + (level + 1).ToString();
+        if (level != 0)
+        {
+            upgradeLevelText.text = "Level: " + level.ToString();
+        }
+        else
+        {
+            upgradeLevelText.text = "Not purchased yet";
+        }
+        
         if (level == 0)
         {
             buyButtonText.text = "BUY";

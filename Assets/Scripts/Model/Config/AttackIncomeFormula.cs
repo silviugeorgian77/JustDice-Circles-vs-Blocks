@@ -18,6 +18,6 @@ public class AttackIncomeFormula
     /// </summary>
     public int GetValue(int upgradeLevel)
     {
-        return (int)(x * Mathf.Pow(upgradeLevel + 1, y));
+        return (int)(x * Mathf.Pow(upgradeLevel, y));
     }
 }

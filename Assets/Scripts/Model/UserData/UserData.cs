@@ -59,10 +59,14 @@ public class UserData
         }
     }
 
+    public Action onReset;
     public void Reset(int attackersCount)
     {
         CurrencyCount = 0;
-        UserAttacker = new Attacker();
+        UserAttacker = new Attacker()
+        {
+            UpgradeLevel = 1
+        };
         if (attackers == null || attackers.Count == 0)
         {
             var tempAttackers = new List<Attacker>();
@@ -84,5 +88,6 @@ public class UserData
                 attacker.UpgradeLevel = 0;
             }
         }
+        onReset?.Invoke();
     }
 }

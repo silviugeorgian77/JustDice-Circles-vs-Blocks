@@ -30,7 +30,7 @@ public class UserAttackerUIItem : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
-        upgradeLevelText.text = "Level: " + (level + 1).ToString();
+        upgradeLevelText.text = "Level: " + level.ToString();
         costText.text
             = "Cost: "
             + upgradeCostFormula

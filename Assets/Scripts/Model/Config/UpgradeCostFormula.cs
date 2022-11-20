@@ -18,6 +18,6 @@ public class UpgradeCostFormula
     /// </summary>
     public int GetValue(float upgradeLevel)
     {
-        return (int)(x * Mathf.Pow(y, upgradeLevel + 1));
+        return (int)(x * Mathf.Pow(y, upgradeLevel));
     }
 }
