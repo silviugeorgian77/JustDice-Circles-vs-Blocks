@@ -15,7 +15,12 @@ public class AttackerDisplayer : MonoBehaviour
     [SerializeField]
     private TMP_Text levelText;
 
+    [SerializeField]
+    private GameObject damageDisplayerPrefab;
+
     public Attacker Attacker { get; private set; }
+
+    private AttackIncomeFormula attackIncomeFormula;
 
     private float angleRelativeToEnemy;
     private float maxDistanceFromEnemy;
@@ -82,9 +87,12 @@ public class AttackerDisplayer : MonoBehaviour
         );
     }
 
-    public void Bind(Attacker attacker)
+    public void Bind(
+        Attacker attacker,
+        AttackIncomeFormula attackIncomeFormula)
     {
         Attacker = attacker;
+        this.attackIncomeFormula = attackIncomeFormula;
         OnUpgradeLevelChanged(attacker.UpgradeLevel);
         attacker.onUpgradeLevelChanged += OnUpgradeLevelChanged;
     }
@@ -121,6 +129,16 @@ public class AttackerDisplayer : MonoBehaviour
             TransformScope.LOCAL,
             EndCallBack: () =>
             {
+                var damageDisplayerObject = Instantiate(damageDisplayerPrefab);
+                damageDisplayerObject.transform.position
+                    = contentMoveable.transform.position;
+                var damageDisplayer
+                    = damageDisplayerObject.GetComponent<DamageDisplayer>();
+                damageDisplayer.Bind(
+                    attackIncomeFormula.GetValue(Attacker.UpgradeLevel)
+                );
+                damageDisplayer.AnimateAndDestroy();
+
                 contentMoveable.MoveY(
                     maxDistanceFromEnemy,
                     RETREAT_DURATION_S,

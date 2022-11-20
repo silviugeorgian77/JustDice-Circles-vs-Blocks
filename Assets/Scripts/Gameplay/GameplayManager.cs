@@ -14,6 +14,9 @@ public class GameplayManager : MonoBehaviour
     private Touchable userAttackTouchable;
 
     [SerializeField]
+    private GameObject damageDisplayerPrefab;
+
+    [SerializeField]
     private Delayer delayer;
 
     private GameConfig gameConfig;
@@ -53,7 +56,7 @@ public class GameplayManager : MonoBehaviour
                 = attackerDisplayerObject.GetComponent<AttackerDisplayer>();
             attackerDisplayers.Add(attackerDisplayer);
             attackerDisplayer.Initialize(currentAngle, DISTANCE_FROM_ENEMY);
-            attackerDisplayer.Bind(attacker);
+            attackerDisplayer.Bind(attacker, gameConfig.attackerIncomeFormula);
             currentAngle += deltaAngleBetweenAttackers;
         }
     }
@@ -102,6 +105,18 @@ public class GameplayManager : MonoBehaviour
     {
         userAttackTouchable.OnClickEndedInsideCallBack = (touchable) =>
         {
+            var damageDisplayerObject = Instantiate(damageDisplayerPrefab);
+            damageDisplayerObject.transform.position
+                = touchable.MouseWorldPosition;
+            var damageDisplayer
+                = damageDisplayerObject.GetComponent<DamageDisplayer>();
+            damageDisplayer.Bind(
+                gameConfig.tapAttackIncomeFormula.GetValue(
+                    userData.UserAttacker.UpgradeLevel
+                )
+            );
+            damageDisplayer.AnimateAndDestroy();
+
             enemyDisplayer.TakeUserDamage();
             var income
                 = gameConfig

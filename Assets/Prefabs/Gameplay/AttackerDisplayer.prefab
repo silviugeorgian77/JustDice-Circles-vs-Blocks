@@ -267,6 +267,7 @@ MonoBehaviour:
   contentMoveable: {fileID: 269059965020408382}
   notBoughtObject: {fileID: 6713706537747010577}
   levelText: {fileID: 3457683410390252327}
+  damageDisplayerPrefab: {fileID: 1420028912616357026, guid: cf9129df16cfa4a789bcea3ca4873f3e, type: 3}
 --- !u!1 &5670351949803994081
 GameObject:
   m_ObjectHideFlags: 0

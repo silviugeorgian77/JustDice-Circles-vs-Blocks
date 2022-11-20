@@ -240,6 +240,7 @@ MonoBehaviour:
   attackerDisplayerPrefab: {fileID: 5670351949279515247, guid: 28a93dd363d3e4e20bc6fee363db275f, type: 3}
   enemyDisplayer: {fileID: 1106953930}
   userAttackTouchable: {fileID: 2006558662}
+  damageDisplayerPrefab: {fileID: 1420028912616357026, guid: cf9129df16cfa4a789bcea3ca4873f3e, type: 3}
   delayer: {fileID: 536310293}
 --- !u!4 &536310292
 Transform:
