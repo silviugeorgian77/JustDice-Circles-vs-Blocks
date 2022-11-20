@@ -31,12 +31,16 @@ public class GameplayManager : MonoBehaviour
         var currentAngle = 0;
         GameObject attackerDisplayerObject;
         AttackerDisplayer attackerDisplayer;
-        for (var i = 0; i < gameConfig.maxAttackersCount; i++)
+        foreach (var attacker in userData.Attackers)
         {
-            attackerDisplayerObject = Instantiate(attackerDisplayerPrefab);
+            attackerDisplayerObject = Instantiate(
+                attackerDisplayerPrefab,
+                transform
+            );
             attackerDisplayer
                 = attackerDisplayerObject.GetComponent<AttackerDisplayer>();
             attackerDisplayer.Initialize(currentAngle, DISTANCE_FROM_ENEMY);
+            attackerDisplayer.Bind(attacker);
             currentAngle += deltaAngleBetweenAttackers;
         }
     }

@@ -63,16 +63,26 @@ public class UserData
     {
         CurrencyCount = 0;
         UserAttacker = new Attacker();
-        var tempAttackers = new List<Attacker>();
-        Attacker attacker;
-        for (int i = 0; i < attackersCount; i++)
+        if (attackers == null || attackers.Count == 0)
         {
-            attacker = new Attacker()
+            var tempAttackers = new List<Attacker>();
+            Attacker attacker;
+            for (int i = 0; i < attackersCount; i++)
             {
-                Id = i
-            };
-            tempAttackers.Add(attacker);
+                attacker = new Attacker()
+                {
+                    Id = i
+                };
+                tempAttackers.Add(attacker);
+            }
+            Attackers = tempAttackers;
         }
-        Attackers = tempAttackers;
+        else
+        {
+            foreach (var attacker in attackers)
+            {
+                attacker.UpgradeLevel = 0;
+            }
+        }
     }
 }
