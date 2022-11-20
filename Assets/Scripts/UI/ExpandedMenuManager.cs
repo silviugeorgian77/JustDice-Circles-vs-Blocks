@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ExpandedMenuManager : MonoBehaviour
@@ -14,8 +15,16 @@ public class ExpandedMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject userAttackerUIItemPrefab;
 
+    [SerializeField]
+    private GameObject notEnoughCurrencyNotif;
+
     private GameConfig gameConfig;
     private UserData userData;
+
+    private void Awake()
+    {
+        notEnoughCurrencyNotif.SetActive(false);
+    }
 
     public void Init(GameConfig gameConfig, UserData userData)
     {
@@ -45,7 +54,20 @@ public class ExpandedMenuManager : MonoBehaviour
             gameConfig.tapUpgradeCostFormula,
             () =>
             {
-                userData.UserAttacker.UpgradeLevel++;
+                var transactionSuccessful
+                    = userData.AddCurrency(
+                        -gameConfig
+                            .tapUpgradeCostFormula
+                            .GetValue(userData.UserAttacker.UpgradeLevel)
+                    );
+                if (transactionSuccessful)
+                {
+                    userData.UserAttacker.UpgradeLevel++;
+                }
+                else
+                {
+                    ShowNotEnoughCurrency();
+                }
             }
         );
     }
@@ -67,7 +89,20 @@ public class ExpandedMenuManager : MonoBehaviour
                 gameConfig.attackerUpgradeCostFormula,
                 () =>
                 {
-                    attacker.UpgradeLevel++;
+                    var transactionSuccessful
+                        = userData.AddCurrency(
+                            -gameConfig
+                                .attackerUpgradeCostFormula
+                                .GetValue(attacker.UpgradeLevel)
+                        );
+                    if (transactionSuccessful)
+                    {
+                        attacker.UpgradeLevel++;
+                    }
+                    else
+                    {
+                        ShowNotEnoughCurrency();
+                    }
                 }
             );
         }
@@ -85,5 +120,16 @@ public class ExpandedMenuManager : MonoBehaviour
         {
             userData.Reset(gameConfig.maxAttackersCount);
         });
+    }
+
+    private async void ShowNotEnoughCurrency()
+    {
+        notEnoughCurrencyNotif.SetActive(true);
+        await Task.Delay(2000);
+        if (notEnoughCurrencyNotif == null)
+        {
+            return;
+        }
+        notEnoughCurrencyNotif.SetActive(false);
     }
 }

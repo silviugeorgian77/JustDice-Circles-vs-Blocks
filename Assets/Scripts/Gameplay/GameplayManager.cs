@@ -90,7 +90,7 @@ public class GameplayManager : MonoBehaviour
                                 .GetValue(
                                     attackerDisplayer.Attacker.UpgradeLevel
                                 );
-                        userData.CurrencyCount += income;
+                        userData.AddCurrency(income);
                     });
                     needsDelay = true;
                 }
@@ -123,7 +123,7 @@ public class GameplayManager : MonoBehaviour
                 = gameConfig
                     .tapAttackIncomeFormula
                     .GetValue(userData.UserAttacker.UpgradeLevel);
-            userData.CurrencyCount += income;
+            userData.AddCurrency(income);
         };
     }
 

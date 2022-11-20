@@ -16,7 +16,7 @@ public class UserData
         {
             return currencyCount;
         }
-        set
+        private set
         {
             currencyCount = value;
             onCurrencyCountChanged?.Invoke(currencyCount);
@@ -89,5 +89,16 @@ public class UserData
             }
         }
         onReset?.Invoke();
+    }
+
+    public bool AddCurrency(int currencyCount)
+    {
+        var sum = CurrencyCount + currencyCount;
+        if (sum >= 0)
+        {
+            CurrencyCount = sum;
+            return true;
+        }
+        return false;
     }
 }
