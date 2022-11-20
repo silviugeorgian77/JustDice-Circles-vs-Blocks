@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 536310292}
   - component: {fileID: 536310291}
+  - component: {fileID: 536310293}
   m_Layer: 0
   m_Name: GameplayManager
   m_TagString: Untagged
@@ -239,6 +240,7 @@ MonoBehaviour:
   attackerDisplayerPrefab: {fileID: 5670351949279515247, guid: 28a93dd363d3e4e20bc6fee363db275f, type: 3}
   enemyDisplayer: {fileID: 1106953930}
   userAttackTouchable: {fileID: 2006558662}
+  delayer: {fileID: 536310293}
 --- !u!4 &536310292
 Transform:
   m_ObjectHideFlags: 0
@@ -256,6 +258,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536310293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536310290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60b2648227dc4f10ad12b94f50361d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &545909379
 GameObject:
   m_ObjectHideFlags: 0

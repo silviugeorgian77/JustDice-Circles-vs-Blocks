@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotTransform: {fileID: 2883120497540041357}
-  contentTransform: {fileID: 640928948419255044}
+  contentMoveable: {fileID: 269059965020408382}
   notBoughtObject: {fileID: 6713706537747010577}
 --- !u!1 &5670351949803994081
 GameObject:
@@ -309,6 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640928948419255044}
+  - component: {fileID: 269059965020408382}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -333,3 +334,16 @@ Transform:
   m_Father: {fileID: 2883120497540041357}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269059965020408382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007252511222446707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca14f0513b5174b4c91a81c0d7607525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationMove: 0

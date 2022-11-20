@@ -7,15 +7,23 @@ public class AttackerDisplayer : MonoBehaviour
     private Transform pivotTransform;
 
     [SerializeField]
-    private Transform contentTransform;
+    private Moveable contentMoveable;
 
     [SerializeField]
     private GameObject notBoughtObject;
 
-    private Attacker attacker;
+    public Attacker Attacker { get; private set; }
+
+    private float maxDistanceFromEnemy;
+
+    private const float ATTACK_DURATION_S = .1f;
+    private const float RETREAT_DURATION_S = .3f;
+    private const float MIN_DISTANCE_FROM_ENEMY = .7f;
 
     public void Initialize(float angleRelToEnemy, float distanceFromEnemy)
     {
+        this.maxDistanceFromEnemy = distanceFromEnemy;
+
         pivotTransform.localEulerAngles
             = new Vector3(
                 pivotTransform.eulerAngles.x,
@@ -23,29 +31,45 @@ public class AttackerDisplayer : MonoBehaviour
                 angleRelToEnemy
             );
 
-        contentTransform.localPosition
-            = new Vector3(
-                pivotTransform.localPosition.x,
-                distanceFromEnemy,
-                pivotTransform.localPosition.z
-            );
+        contentMoveable.MoveY(
+            distanceFromEnemy,
+            0,
+            TransformScope.LOCAL
+        );
     }
 
     public void Bind(Attacker attacker)
     {
-        this.attacker = attacker;
+        Attacker = attacker;
         OnUpgradeLevelChanged(attacker.UpgradeLevel);
         attacker.onUpgradeLevelChanged += OnUpgradeLevelChanged;
     }
 
     private void OnUpgradeLevelChanged(int level)
     {
-        var isBought = attacker.UpgradeLevel > 0;
+        var isBought = Attacker.UpgradeLevel > 0;
         notBoughtObject.SetActive(!isBought);
+    }
+
+    public void Attack()
+    {
+        contentMoveable.MoveY(
+            MIN_DISTANCE_FROM_ENEMY,
+            ATTACK_DURATION_S,
+            TransformScope.LOCAL,
+            EndCallBack: () =>
+            {
+                contentMoveable.MoveY(
+                    maxDistanceFromEnemy,
+                    RETREAT_DURATION_S,
+                    TransformScope.LOCAL
+                );
+            }
+        );
     }
 
     private void OnDestroy()
     {
-        attacker.onUpgradeLevelChanged -= OnUpgradeLevelChanged;
+        Attacker.onUpgradeLevelChanged -= OnUpgradeLevelChanged;
     }
 }
