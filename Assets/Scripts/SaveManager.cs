@@ -48,6 +48,11 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
     private void SaveGame()
     {
         if (userDataLocalProvider == null || userData == null)
