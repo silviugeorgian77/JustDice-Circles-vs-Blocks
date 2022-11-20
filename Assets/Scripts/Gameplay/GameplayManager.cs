@@ -61,14 +61,22 @@ public class GameplayManager : MonoBehaviour
     private async void InitAttackersAttack()
     {
         AttackerDisplayer attackerDisplayer;
+        bool needsDelay = false;
+        bool atLeastOneAttacker = false;
         while (true)
         {
+            atLeastOneAttacker = false;
             for (var i = 0; i < attackerDisplayers.Count; i++)
             {
                 attackerDisplayer = attackerDisplayers[i];
                 if (attackerDisplayer.Attacker.UpgradeLevel > 0)
                 {
-                    await Task.Delay(i * DELAY_BETWEEN_ATTACKERS_MS);
+                    if (needsDelay)
+                    {
+                        needsDelay = false;
+                        await Task.Delay(DELAY_BETWEEN_ATTACKERS_MS);
+                    }
+                    atLeastOneAttacker = true;
                     attackerDisplayer.Attack();
                     delayer.AddDelay(gameConfig.attackTimeS, delay =>
                     {
@@ -80,9 +88,13 @@ public class GameplayManager : MonoBehaviour
                                 );
                         userData.CurrencyCount += income;
                     });
+                    needsDelay = true;
                 }
             }
-            await Task.Delay(gameConfig.attackTimeS * 1000);
+            if (!atLeastOneAttacker)
+            {
+                await Task.Delay(DELAY_BETWEEN_ATTACKERS_MS);
+            }
         }
     }
 
