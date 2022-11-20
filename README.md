@@ -1,5 +1,28 @@
 # JustDice-Circles-vs-Blocks
 
+## Acceptance Criteria
+- Screen Dimension: Mobile Portrait
+- Scene: one color background, in the middle of the screen is a block (“the
+- enemy”)
+- Core Loop: Tapping on the block increases the player’s gold
+- Upgrades: Gold per Tap can be increased by incremental upgrades
+- Gold per Tap Scaling: goldPerTap = 5*upgradeLevel^2.1
+- Upgrade Cost Scaling: upgradeCost = 5 * 1.08^upgradeLevel
+- Passive Damage: Player can buy circles (helpers) that “attack” the block and
+- generate passive income
+- Up to 5 circles can be bought
+- First circle costs 100 gold
+- Each following circle costs 10 times as much as the previous one
+- Each circle “attacks” once every second
+- Each circle can be upgraded by investing gold
+- Same scaling formulas as for gold per tap
+- Remote config: Scaling formulas are configured on a remote file on a server
+- File is downloaded on game start
+- Attack / Shooting animation when circles attack the block
+- Hit animation when player taps on the block
+- Make it pretty. Nice, harmonic colors and effects
+- Game runs on actual Android or iOS phone
+
 ## Achitecture
 As this is an idle game, this should be a data oriented game.
 Idle games offer many upgrades and purhcases. Each time something is upgraded or purchased, it affects a couple of areas of the game, thus, it would be a good idea to design the architecture in a way that is easy to make UI updates upon data changes.
