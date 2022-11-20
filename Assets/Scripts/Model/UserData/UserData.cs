@@ -64,10 +64,17 @@ public class UserData
     public void Reset(int attackersCount)
     {
         CurrencyCount = 0;
-        UserAttacker = new Attacker()
+        if (UserAttacker == null)
         {
-            UpgradeLevel = 1
-        };
+            UserAttacker = new Attacker()
+            {
+                UpgradeLevel = 1
+            };
+        }
+        else
+        {
+            UserAttacker.UpgradeLevel = 1;
+        }
         if (attackers == null || attackers.Count == 0)
         {
             var tempAttackers = new List<Attacker>();

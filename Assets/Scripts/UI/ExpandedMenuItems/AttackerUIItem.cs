@@ -38,7 +38,7 @@ public class AttackerUIItem : MonoBehaviour
     {
         this.upgradeCostFormula = upgradeCostFormula;
         bagImage.color = attacker.Id % 2 == 0 ? color0 : color1;
-        titleText.text = "Circle " + attacker.Id;
+        titleText.text = "Circle " + (attacker.Id + 1);
         UpdateLevel(attacker.UpgradeLevel);
         attacker.onUpgradeLevelChanged += UpdateLevel;
         buyButton.onClick.AddListener(() => action.Invoke());
