@@ -51,6 +51,10 @@ public class SaveManager : MonoBehaviour
             {
                 Debug.Log(nameof(SaveManager) + " Autosave Successful");
             }
+            else
+            {
+                Debug.Log(nameof(SaveManager) + " Autosave Failed");
+            }
         });
     }
 }

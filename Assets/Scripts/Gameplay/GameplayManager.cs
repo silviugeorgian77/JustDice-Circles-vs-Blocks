@@ -77,7 +77,7 @@ public class GameplayManager : MonoBehaviour
                         await Task.Delay(DELAY_BETWEEN_ATTACKERS_MS);
                     }
                     atLeastOneAttacker = true;
-                    attackerDisplayer.Attack();
+                    attackerDisplayer.AnimateAttack();
                     delayer.AddDelay(gameConfig.attackTimeS, delay =>
                     {
                         var income

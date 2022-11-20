@@ -21,11 +21,18 @@ public class Rotatable : MonoBehaviour
     private float rotationY;
     private float rotationZ;
 
+    public enum RotateMode
+    {
+        LONG,
+        SHORT
+    }
+
     public void RotateTo(
         float newRotationX,
         float newRotationY,
         float newRotationZ,
         float duration,
+        RotateMode rotateMode = RotateMode.LONG,
         EaseEquations.EaseFunctionDelegate easeFunction = null,
         RotateEndedCallBackFunction EndCallBack = null)
     {
@@ -57,12 +64,46 @@ public class Rotatable : MonoBehaviour
         changeInValueRotationX = finalRotationX - startRotationX;
         changeInValueRotationY = finalRotationY - startRotationY;
         changeInValueRotationZ = finalRotationZ - startRotationZ;
+        if (rotateMode == RotateMode.SHORT)
+        {
+            if (changeInValueRotationX > 180)
+            {
+                finalRotationX -= 360;
+                changeInValueRotationX = finalRotationX - startRotationX;
+            }
+            if (changeInValueRotationX < -180)
+            {
+                finalRotationX += 360;
+                changeInValueRotationX = finalRotationX - startRotationX;
+            }
+            if (changeInValueRotationY > 180)
+            {
+                finalRotationY -= 360;
+                changeInValueRotationY = finalRotationY - startRotationY;
+            }
+            if (changeInValueRotationY < -180)
+            {
+                finalRotationY += 360;
+                changeInValueRotationY = finalRotationY - startRotationY;
+            }
+            if (changeInValueRotationZ > 180)
+            {
+                finalRotationZ -= 360;
+                changeInValueRotationZ = finalRotationZ - startRotationZ;
+            }
+            if (changeInValueRotationZ < -180)
+            {
+                finalRotationZ += 360;
+                changeInValueRotationZ = finalRotationZ - startRotationZ;
+            }
+        }
         easeFunctionRotate = easeFunction;
     }
 
     public void RotateToX(
         float newRotationX,
         float duration,
+        RotateMode rotateMode = RotateMode.LONG,
         EaseEquations.EaseFunctionDelegate easeFunction = null,
         RotateEndedCallBackFunction EndCallBack = null)
     {
@@ -71,6 +112,7 @@ public class Rotatable : MonoBehaviour
             transform.rotation.eulerAngles.y,
             transform.rotation.eulerAngles.z,
             duration,
+            rotateMode,
             easeFunction,
             EndCallBack
         );
@@ -79,6 +121,7 @@ public class Rotatable : MonoBehaviour
     public void RotateToY(
         float newRotationY,
         float duration,
+        RotateMode rotateMode = RotateMode.LONG,
         EaseEquations.EaseFunctionDelegate easeFunction = null,
         RotateEndedCallBackFunction EndCallBack = null)
     {
@@ -87,6 +130,7 @@ public class Rotatable : MonoBehaviour
             newRotationY,
             transform.rotation.eulerAngles.z,
             duration,
+            rotateMode,
             easeFunction,
             EndCallBack
         );
@@ -95,6 +139,7 @@ public class Rotatable : MonoBehaviour
     public void RotateToZ(
        float newRotationZ,
        float duration,
+       RotateMode rotateMode = RotateMode.LONG,
        EaseEquations.EaseFunctionDelegate easeFunction = null,
        RotateEndedCallBackFunction EndCallBack = null)
     {
@@ -103,6 +148,7 @@ public class Rotatable : MonoBehaviour
             transform.rotation.eulerAngles.y,
             newRotationZ,
             duration,
+            rotateMode,
             easeFunction,
             EndCallBack
         );
