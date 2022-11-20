@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class AttackerDisplayer : MonoBehaviour
@@ -10,6 +11,9 @@ public class AttackerDisplayer : MonoBehaviour
 
     [SerializeField]
     private GameObject notBoughtObject;
+
+    [SerializeField]
+    private TMP_Text levelText;
 
     public Attacker Attacker { get; private set; }
 
@@ -81,9 +85,12 @@ public class AttackerDisplayer : MonoBehaviour
         var isBought = Attacker.UpgradeLevel > 0;
         notBoughtObject.SetActive(!isBought);
 
+        levelText.gameObject.SetActive(isBought);
+
         pivotRotatable.RotateStop();
         if (isBought)
         {
+            levelText.text = (level + 1).ToString();
             AnimateIdle();
         }
     }
@@ -107,6 +114,11 @@ public class AttackerDisplayer : MonoBehaviour
                 );
             }
         );
+    }
+
+    private void Update()
+    {
+        levelText.transform.rotation = Quaternion.identity;
     }
 
     private void OnDestroy()
