@@ -16,7 +16,7 @@ public class UpgradeCostFormula
     /// value = <see cref="x">
     ///     * <see cref="y"> ^ <paramref name="upgradeLevel">
     /// </summary>
-    public int GetValue(float upgradeLevel)
+    public int GetValue(int upgradeLevel)
     {
         return (int)(x * Mathf.Pow(y, upgradeLevel));
     }
